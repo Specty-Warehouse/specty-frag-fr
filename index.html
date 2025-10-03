@@ -26,6 +26,7 @@
             padding: 40px 40px;
             background: linear-gradient(90deg, #000000, #002447);
             color: white;
+            position: relative;
         }
 
         .brand {
@@ -233,10 +234,19 @@
         }
 
         /* ===== MOBILE ONLY ===== */
+        /* Hide hamburger & mobile menu by default */
+        .hamburger,
+        .mobile-menu,
+        .overlay-bg {
+            display: none;
+        }
+
         @media (max-width: 768px) {
+
+            /* Navbar adjustments */
             .navbar {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
+                justify-content: space-between;
                 padding: 20px;
             }
 
@@ -245,15 +255,70 @@
             }
 
             .nav-links {
-                flex-direction: column;
-                gap: 15px;
+                display: none;
+                /* hide normal nav links */
+            }
+
+            /* Hamburger ☰ */
+            .hamburger {
+                display: block;
+                font-size: 2em;
+                cursor: pointer;
+            }
+
+            /* Mobile menu */
+            .mobile-menu {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: -250px;
+                width: 250px;
+                height: 100%;
+                background: white;
+                color: black;
+                box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+                padding: 60px 20px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+
+            .mobile-menu.active {
+                right: 0;
+            }
+
+            .mobile-menu a {
+                display: block;
+                padding: 15px 0;
+                text-decoration: none;
+                color: black;
+                font-size: 1.2em;
+            }
+
+            .mobile-menu a:hover {
+                color: #002447;
+            }
+
+            /* Overlay behind menu */
+            .overlay-bg {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
                 width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+                z-index: 900;
             }
 
-            .nav-links li a {
-                font-size: 1em;
+            .overlay-bg.active {
+                opacity: 1;
+                visibility: visible;
             }
 
+            /* Categories adjustments */
             .categories {
                 padding: 40px 20px;
             }
@@ -271,6 +336,7 @@
                 font-size: 1em;
             }
 
+            /* Featured adjustments */
             .featured {
                 padding: 40px 20px;
             }
@@ -307,6 +373,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="brand">Specty's</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li class="search-box">
                 <input type="text" class="search-input" placeholder="Search products...">
@@ -328,6 +395,16 @@
             <li><a href="#">Compare</a></li>
         </ul>
     </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Home</a>
+        <a href="#">Store</a>
+        <a href="#">Account</a>
+        <a href="#">Cart</a>
+        <a href="#">Compare</a>
+    </div>
+    <div class="overlay-bg" id="overlay" onclick="toggleMenu()"></div>
 
     <!-- CATEGORIES -->
     <section class="categories">
@@ -415,6 +492,13 @@
             searchBox.classList.toggle('active');
             const input = searchBox.querySelector('.search-input');
             if (searchBox.classList.contains('active')) input.focus();
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
     </script>
 </body>
