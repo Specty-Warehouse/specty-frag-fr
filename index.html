@@ -382,18 +382,30 @@
         </ul>
     </nav>
 
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#">Home</a>
-        <a href="#">Store</a>
-        <a href="#">Account</a>
-        <a href="#">Cart</a>
-        <a href="#">Compare</a>
+  <!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">Store</a>
+    <a href="#">Account</a>
+    <a href="#">Cart</a>
+    <a href="#">Compare</a>
+    <a href="#" style="color:black;" onclick="toggleTheme()">Theme ◐</a>
+</div>
+<div class="overlay-bg" id="overlay" onclick="toggleMenu()"></div>
 
-        <!-- Theme toggle at the bottom -->
-        <span class="theme-toggle" onclick="toggleTheme()">◐ Theme</span>
-    </div>
-    <div class="overlay-bg" id="overlay" onclick="toggleMenu()"></div>
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+    }
+</script>
+
 
 
     <!-- CATEGORIES -->
@@ -537,3 +549,4 @@
 </body>
 
 </html>
+
