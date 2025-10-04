@@ -2,509 +2,506 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specty's Online Store</title>
-    <style>
-        /* ===== GLOBAL RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specty's Online Store</title>
+  <style>
+    /* ===== GLOBAL RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #ffffff;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+    }
 
-        /* ===== NAVBAR ===== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 40px;
-            background: linear-gradient(90deg, #000000, #002447);
-            color: white;
-            position: relative;
-        }
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 40px;
+      background: linear-gradient(90deg, #000000, #002447);
+      color: white;
+      position: relative;
+    }
 
-        .brand {
-            font-size: 3.9em;
-            font-weight: bold;
-            letter-spacing: 2px;
-            font-family: "French Script MT", cursive;
-        }
+    .brand {
+      font-size: 3.9em;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-family: "French Script MT", cursive;
+    }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            list-style: none;
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+    }
 
-        .nav-links li {
-            position: relative;
-        }
+    .nav-links li {
+      position: relative;
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+    }
 
-        .nav-links a:hover {
-            color: #ffd700;
-            transform: scale(1.1);
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
-        }
+    .nav-links a:hover {
+      color: #ffd700;
+      transform: scale(1.1);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+    }
 
-        /* Dropdown */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(19, 19, 19, 0.836);
-            min-width: 180px;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
+    /* Dropdown */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(19, 19, 19, 0.836);
+      min-width: 180px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
 
-        .dropdown-content a {
-            display: block;
-            padding: 12px 15px;
-            text-decoration: none;
-            color: white;
-            transition: background 0.3s ease, padding-left 0.3s ease;
-        }
+    .dropdown-content a {
+      display: block;
+      padding: 12px 15px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease, padding-left 0.3s ease;
+    }
 
-        .dropdown-content a:hover {
-            background: #f1f1f1;
-            color: black;
-            padding-left: 20px;
-        }
+    .dropdown-content a:hover {
+      background: #f1f1f1;
+      color: black;
+      padding-left: 20px;
+    }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-        /* Search */
-        .search-box {
-            display: flex;
-            align-items: center;
-        }
+    /* Search */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
 
-        .search-input {
-            width: 0;
-            opacity: 0;
-            padding: 5px 10px;
-            font-size: 1em;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
+    .search-input {
+      width: 0;
+      opacity: 0;
+      padding: 5px 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
 
-        .search-box.active .search-input {
-            width: 180px;
-            opacity: 1;
-            margin-right: 10px;
-        }
+    .search-box.active .search-input {
+      width: 180px;
+      opacity: 1;
+      margin-right: 10px;
+    }
 
-        .search-icon {
-            cursor: pointer;
-            font-size: 1.2em;
-            color: white;
-            transition: all 0.3s ease;
-        }
+    .search-icon {
+      cursor: pointer;
+      font-size: 1.2em;
+      color: white;
+      transition: all 0.3s ease;
+    }
 
-        .search-icon:hover {
-            color: #ffd700;
-            transform: scale(1.2);
-            text-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
-        }
+    .search-icon:hover {
+      color: #ffd700;
+      transform: scale(1.2);
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
+    }
 
-        /* ===== CATEGORIES ===== */
-        .categories {
-            text-align: center;
-            padding: 60px 40px;
-            background: #f8f8f8;
-        }
+    /* ===== CATEGORIES ===== */
+    .categories {
+      text-align: center;
+      padding: 60px 40px;
+      background: #f8f8f8;
+    }
 
-        .categories h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-        }
+    .categories h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
 
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-        .category-card {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .category-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .category-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
+    .category-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
 
-        .category-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .category-card .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.4);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
+    .category-card .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
 
-        /* ===== FEATURED ===== */
-        .featured {
-            padding: 60px 40px;
-            background: #ffffff;
-            text-align: center;
-        }
+    /* ===== FEATURED ===== */
+    .featured {
+      padding: 60px 40px;
+      background: #ffffff;
+      text-align: center;
+    }
 
-        .featured h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-        }
+    .featured h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
 
-        .featured-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+    .featured-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-        .featured-card {
-            width: 250px;
-            background: #f8f8f8;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .featured-card {
+      width: 250px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .featured-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
+    .featured-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
-        .featured-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+    .featured-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
 
-        .featured-card h3 {
-            margin: 10px 0 5px 0;
-            font-size: 1.1em;
-        }
+    .featured-card h3 {
+      margin: 10px 0 5px 0;
+      font-size: 1.1em;
+    }
 
-        .featured-card p {
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333;
-        }
+    .featured-card p {
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #333;
+    }
 
-        /* ===== MOBILE ONLY ===== */
-        /* Hide hamburger & mobile menu by default */
-        .hamburger,
-        .mobile-menu,
-        .overlay-bg {
-            display: none;
-        }
+    /* ===== MOBILE ONLY ===== */
+    .hamburger,
+    .mobile-menu,
+    .overlay-bg {
+      display: none;
+    }
 
-        @media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-            /* Navbar adjustments */
-            .navbar {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 20px;
-            }
+      /* Navbar adjustments */
+      .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+      }
 
-            .brand {
-                font-size: 2.8em;
-            }
+      .brand {
+        font-size: 2.8em;
+      }
 
-            .nav-links {
-                display: none;
-                /* hide normal nav links */
-            }
+      .nav-links {
+        display: none;
+      }
 
-            /* Hamburger ☰ */
-            .hamburger {
-                display: block;
-                font-size: 2em;
-                cursor: pointer;
-            }
+      /* Hamburger ☰ */
+      .hamburger {
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+      }
 
-            /* Mobile menu */
-            .mobile-menu {
-                display: block;
-                position: fixed;
-                top: 0;
-                right: -250px;
-                width: 250px;
-                height: 100%;
-                background: white;
-                color: black;
-                box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
-                padding: 60px 20px;
-                transition: right 0.3s ease;
-                z-index: 1000;
-            }
+      /* Mobile menu */
+      .mobile-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background: white;
+        color: black;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+        padding: 60px 20px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+      }
 
-            .mobile-menu.active {
-                right: 0;
-            }
+      .mobile-menu.active {
+        right: 0;
+      }
 
-            .mobile-menu a {
-                display: block;
-                padding: 15px 0;
-                text-decoration: none;
-                color: black;
-                font-size: 1.2em;
-            }
+      .mobile-menu a {
+        display: block;
+        padding: 15px 0;
+        text-decoration: none;
+        color: black;
+        font-size: 1.2em;
+      }
 
-            .mobile-menu a:hover {
-                color: #002447;
-            }
+      .mobile-menu a:hover {
+        color: #002447;
+      }
 
-            /* Overlay behind menu */
-            .overlay-bg {
-                display: block;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.4);
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease;
-                z-index: 900;
-            }
+      /* Overlay behind menu */
+      .overlay-bg {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        z-index: 900;
+      }
 
-            .overlay-bg.active {
-                opacity: 1;
-                visibility: visible;
-            }
+      .overlay-bg.active {
+        opacity: 1;
+        visibility: visible;
+      }
 
-            /* Categories adjustments */
-            .categories {
-                padding: 40px 20px;
-            }
+      /* Categories adjustments */
+      .categories {
+        padding: 40px 20px;
+      }
 
-            .categories h2 {
-                font-size: 1.6em;
-            }
+      .categories h2 {
+        font-size: 1.6em;
+      }
 
-            .category-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
+      .category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
 
-            .category-card .overlay {
-                font-size: 1em;
-            }
+      .category-card .overlay {
+        font-size: 1em;
+      }
 
-            /* Featured adjustments */
-            .featured {
-                padding: 40px 20px;
-            }
+      /* Featured adjustments */
+      .featured {
+        padding: 40px 20px;
+      }
 
-            .featured h2 {
-                font-size: 1.6em;
-            }
+      .featured h2 {
+        font-size: 1.6em;
+      }
 
-            .featured-grid {
-                flex-direction: column;
-                gap: 15px;
-            }
+      .featured-grid {
+        flex-direction: column;
+        gap: 15px;
+      }
 
-            .featured-card {
-                width: 100%;
-            }
+      .featured-card {
+        width: 100%;
+      }
 
-            .featured-card img {
-                height: 200px;
-            }
+      /* ✅ Fix: make product images taller on mobile */
+      .featured-card img {
+        height: 240px;
+        object-fit: cover;
+      }
 
-            .featured-card h3 {
-                font-size: 1em;
-            }
+      .featured-card h3 {
+        font-size: 1em;
+      }
 
-            .featured-card p {
-                font-size: 0.9em;
-            }
-        }
-    </style>
+      .featured-card p {
+        font-size: 0.9em;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="brand">BackStage</div>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-        <ul class="nav-links">
-            <li class="search-box">
-                <input type="text" class="search-input" placeholder="Search products...">
-                <span class="search-icon" onclick="toggleSearch()">🔍</span>
-            </li>
-            <li><a href="#">Home</a></li>
-            <li class="dropdown">
-                <a href="#">Store ▾</a>
-                <div class="dropdown-content">
-                    <a href="#">Fragrances</a>
-                    <a href="#">Perfumes</a>
-                    <a href="#">Clothes</a>
-                    <a href="#">Jewelry</a>
-                    <a href="#">Watches</a>
-                </div>
-            </li>
-            <li><a href="#">Account</a></li>
-            <li><a href="#">Cart</a></li>
-            <li><a href="#">Compare</a></li>
-        </ul>
-    </nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="brand">BackStage</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links">
+      <li class="search-box">
+        <input type="text" class="search-input" placeholder="Search products...">
+        <span class="search-icon" onclick="toggleSearch()">🔍</span>
+      </li>
+      <li><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Store ▾</a>
+        <div class="dropdown-content">
+          <a href="#">Fragrances</a>
+          <a href="#">Perfumes</a>
+          <a href="#">Clothes</a>
+          <a href="#">Jewelry</a>
+          <a href="#">Watches</a>
+        </div>
+      </li>
+      <li><a href="#">Account</a></li>
+      <li><a href="#">Cart</a></li>
+      <li><a href="#">Compare</a></li>
+    </ul>
+  </nav>
 
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#">Home</a>
-        <a href="#">Store</a>
-        <a href="#">Account</a>
-        <a href="#">Cart</a>
-        <a href="#">Compare</a>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">Store</a>
+    <a href="#">Account</a>
+    <a href="#">Cart</a>
+    <a href="#">Compare</a>
+  </div>
+  <div class="overlay-bg" id="overlay" onclick="toggleMenu()"></div>
+
+  <!-- CATEGORIES -->
+  <section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="https://jknowles.com/wp-content/uploads/2025/07/JKnowles_DiorSauvageShot2-SRGB.jpg" alt="Perfumes">
+        <div class="overlay">
+          <h3>Perfumes</h3>
+        </div>
+      </div>
+      <div class="category-card">
+        <img src="https://www.frenchessence.com/cdn/shop/files/Men.jpg?v=1741675198&width=1946" alt="Perfume Combos">
+        <div class="overlay">
+          <h3>Perfume Combos</h3>
+        </div>
+      </div>
+      <div class="category-card">
+        <img src="https://cdn.prod.website-files.com/6256995755a7ea0a3d8fbd11/658acbf98f30c0f07e484562_img%209.jpg"
+          alt="Clothing">
+        <div class="overlay">
+          <h3>Clothing</h3>
+        </div>
+      </div>
+      <div class="category-card">
+        <img src="https://najo.com.au/cdn/shop/files/STORY2-NOIREXTREME-24673-Najo-0270-2.jpg?v=1743486919&width=1200"
+          alt="Men Jewelry">
+        <div class="overlay">
+          <h3>Men Jewelry</h3>
+        </div>
+      </div>
+      <div class="category-card">
+        <img src="https://i.pinimg.com/564x/1e/41/8f/1e418f068b62a8647691f9f64993c9fc.jpg" alt="Watches">
+        <div class="overlay">
+          <h3>Watches</h3>
+        </div>
+      </div>
     </div>
-    <div class="overlay-bg" id="overlay" onclick="toggleMenu()"></div>
+  </section>
 
-    <!-- CATEGORIES -->
-    <section class="categories">
-        <h2>Shop by Category</h2>
-        <div class="category-grid">
-            <div class="category-card">
-                <img src="https://jknowles.com/wp-content/uploads/2025/07/JKnowles_DiorSauvageShot2-SRGB.jpg"
-                    alt="Perfumes">
-                <div class="overlay">
-                    <h3>Perfumes</h3>
-                </div>
-            </div>
-            <div class="category-card">
-                <img src="https://www.frenchessence.com/cdn/shop/files/Men.jpg?v=1741675198&width=1946"
-                    alt="Perfume Combos">
-                <div class="overlay">
-                    <h3>Perfume Combos</h3>
-                </div>
-            </div>
-            <div class="category-card">
-                <img src="https://cdn.prod.website-files.com/6256995755a7ea0a3d8fbd11/658acbf98f30c0f07e484562_img%209.jpg"
-                    alt="Clothing">
-                <div class="overlay">
-                    <h3>Clothing</h3>
-                </div>
-            </div>
-            <div class="category-card">
-                <img src="https://najo.com.au/cdn/shop/files/STORY2-NOIREXTREME-24673-Najo-0270-2.jpg?v=1743486919&width=1200"
-                    alt="Men Jewelry">
-                <div class="overlay">
-                    <h3>Men Jewelry</h3>
-                </div>
-            </div>
-            <div class="category-card">
-                <img src="https://i.pinimg.com/564x/1e/41/8f/1e418f068b62a8647691f9f64993c9fc.jpg" alt="Watches">
-                <div class="overlay">
-                    <h3>Watches</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- FEATURED PRODUCTS -->
+  <section class="featured">
+    <h2>Featured Products</h2>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img
+          src="https://cdn11.bigcommerce.com/s-d75m9rit2s/images/stencil/1280x1280/products/19158/1432519/P10024513_4__16587.1720045433.jpg?c=1"
+          alt="Product 1">
+        <h3>Jean Paul Gaultier: Le Beau</h3>
+        <p>৳995.00 - ৳11,000.00</p>
+      </div>
+      <div class="featured-card">
+        <img src="https://cdn.shopify.com/s/files/1/0844/3861/4342/files/CHERR0047.png?v=1741178684" alt="Product 2">
+        <h3>Carolina Herrera: Bad Boy Le Parfum</h3>
+        <p>৳655 - ৳13,590</p>
+      </div>
+      <div class="featured-card">
+        <img
+          src="https://us.viktor-rolf.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-viktorrolf-us-Library/default/dw772b6a13/images/pdp/VKR_034/03_vr_frag_spb_extreme_perfect_pdp_still_life_1x1_V2.jpg?sw=345&sh=345&sm=cut&sfrm=jpg&q=70"
+          alt="Product 3">
+        <h3>Viktor & Rolf: Spicebomb Extreme Eau De Parfum</h3>
+        <p>৳895 - ৳12,015</p>
+      </div>
+      <div class="featured-card">
+        <img src="https://theparfumerie.lk/wp-content/uploads/2013/08/BRILLIANT-BASICS-CONTENT-7-scaled.jpg"
+          alt="Product 4">
+        <h3>Rabanne: 1 Million EDT</h3>
+        <p>৳1,195 - ৳12,780</p>
+      </div>
+      <div class="featured-card">
+        <img src="https://s3.letoilegulf.com/oasis-product-prod/prod_assets/Foto_Yekom/CRH973540_1.jpg" alt="Product 5">
+        <h3>Carolina Herrera: Elixir Eau De Parfum</h3>
+        <p>৳695 - ৳16,350</p>
+      </div>
+      <div class="featured-card">
+        <img src="https://www.sephora.com/productimages/sku/s2651248-av-04-zoom.jpg" alt="Product 6">
+        <h3>Azzaro: The Most Wanted Intense Eau De Parfum</h3>
+        <p>৳845 - ৳9,295</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- FEATURED PRODUCTS -->
-    <section class="featured">
-        <h2>Featured Products</h2>
-        <div class="featured-grid">
-            <div class="featured-card">
-                <img src="https://cdn11.bigcommerce.com/s-d75m9rit2s/images/stencil/1280x1280/products/19158/1432519/P10024513_4__16587.1720045433.jpg?c=1"
-                    alt="Product 1">
-                <h3>Jean Paul Gaultier: Le Beau</h3>
-                <p>৳995 - ৳11,000</p>
-            </div>
-            <div class="featured-card">
-                <img src="https://cdn.shopify.com/s/files/1/0844/3861/4342/files/CHERR0047.png?v=1741178684"
-                    alt="Product 2">
-                <h3>Carolina Herrera: Bad Boy Le Parfum</h3>
-                <p>৳655 - ৳13,590</p>
-            </div>
-            <div class="featured-card">
-                <img src="https://us.viktor-rolf.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-viktorrolf-us-Library/default/dw772b6a13/images/pdp/VKR_034/03_vr_frag_spb_extreme_perfect_pdp_still_life_1x1_V2.jpg?sw=345&sh=345&sm=cut&sfrm=jpg&q=70"
-                    alt="Product 3">
-                <h3>Viktor & Rolf: Spicebomb Extreme Eau De Parfum</h3>
-                <p>৳895 - ৳12,015</p>
-            </div>
-            <div class="featured-card">
-                <img src="https://theparfumerie.lk/wp-content/uploads/2013/08/BRILLIANT-BASICS-CONTENT-7-scaled.jpg"
-                    alt="Product 4">
-                <h3>Rabanne: 1 Million EDT</h3>
-                <p>৳1,195 - ৳12,780</p>
-            </div>
-            <div class="featured-card">
-                <img src="https://s3.letoilegulf.com/oasis-product-prod/prod_assets/Foto_Yekom/CRH973540_1.jpg"
-                    alt="Product 5">
-                <h3>Carolina Herrera: Elixir Eau De Parfum</h3>
-                <p>৳695 - ৳16,350</p>
-            </div>
-            <div class="featured-card">
-                <img src="https://www.sephora.com/productimages/sku/s2651248-av-04-zoom.jpg" alt="Product 6">
-                <h3>Azzaro: The Most Wanted Intense Eau De Parfum</h3>
-                <p>৳845 - ৳9,295</p>
-            </div>
-        </div>
-    </section>
+  <script>
+    function toggleSearch() {
+      const searchBox = document.querySelector('.search-box');
+      searchBox.classList.toggle('active');
+      const input = searchBox.querySelector('.search-input');
+      if (searchBox.classList.contains('active')) input.focus();
+    }
 
-    <script>
-        function toggleSearch() {
-            const searchBox = document.querySelector('.search-box');
-            searchBox.classList.toggle('active');
-            const input = searchBox.querySelector('.search-input');
-            if (searchBox.classList.contains('active')) input.focus();
-        }
-
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('overlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-    </script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+  </script>
 </body>
 
 </html>
-
